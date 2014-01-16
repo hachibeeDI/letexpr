@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/hachibeeDI/letexpr.png?branch=master)](https://travis-ci.org/hachibeeDI/letexpr)
+
 # letexpr
 
 That is python module imitate `let expression` like a Haskell.
