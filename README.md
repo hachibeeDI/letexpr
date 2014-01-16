@@ -1,7 +1,7 @@
 
 # letexpr
 
-That is python module imitate 'let expression' like a Haskell.
+That is python module imitate `let expression` like a Haskell.
 
 
 # Installation
@@ -10,7 +10,8 @@ That is python module imitate 'let expression' like a Haskell.
 $ pip install https://github.com/hachibeeDI/letexpr/archive/master.zip
 ```
 
-# Usage
+
+# Example
 
 ```python
 from letexpr import let
@@ -26,6 +27,8 @@ answer = (
 print answer
 #  => 'x = 10, y = 20, x * y = 200'
 
+
+# with List Comprehensions
 even_or_odd = [
     (let()
         | ('_i', lambda : str(i))
