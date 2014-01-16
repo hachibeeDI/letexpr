@@ -13,6 +13,15 @@ class let(object):
         ).in_(lambda x, y, size: \
                  'x = {x}, y = {y}, x * y = {size}'.format(x=x, y=y, size=size))
     'x = 10, y = 20, x * y = 200'
+
+    >>> [ \
+        (let() \
+            | ('_i', lambda : str(i)) \
+            | ('r', lambda : 'even' if i % 2 == 0 else 'odd') \
+        ).in_(lambda _i, r: \
+            _i + ' is an ' + r  + ' number.') \
+                for i in range(1, 5)]
+    ['1 is an odd number.', '2 is an even number.', '3 is an odd number.', '4 is an even number.']
     '''
 
     def __init__(self, action=None):
