@@ -41,7 +41,12 @@ class let(object):
         return self
 
     def __extract_require_args(self, arg_keys):
-        return {k: v for k, v in self.lets.iteritems() if k in arg_keys}
+        try:
+            # I think it is dirty hack too, but now most people use python2.
+            binded_items = self.lets.iteritems()
+        except AttributeError:
+            binded_items = self.lets.items()
+        return dict((k, v) for k, v in binded_items if k in arg_keys)
 
     def in_(self, func):
         require_arg_keys = getargspec(func).args
