@@ -9,6 +9,13 @@ LICENSE = open(
 DESCRIPTION = open(
     os.path.join(os.path.dirname(__file__), 'README.md')).read().strip()
 
+classifiers = [
+   "Development Status :: 4 - Beta",
+   "License :: OSI Approved :: MIT License",
+   "Programming Language :: Python",
+   "Topic :: Software Development",
+]
+
 setup(
     name='letexpr',
     version='0.1',
@@ -17,7 +24,8 @@ setup(
     author_email='8hachibee125@gmail.com',
     url='https://github.com/hachibeeDI/letexpr',
     py_modules=['letexpr'],
-    keywords=['letexpression', ],
+    keywords=['let', 'expression', ],
+    classifiers=classifiers,
     install_requires=[''],
     license=LICENSE,
     long_description=DESCRIPTION,
