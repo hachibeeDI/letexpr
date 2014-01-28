@@ -52,13 +52,10 @@ def test_lazy_evalucated():
      | ('x', lambda: watcher.append('Iam x'))
      | ('y', lambda: watcher.append('Iam y'))
      | ('z', lambda y: watcher.append('Iam z'))
-     | ('_a', lambda x: watcher.append('Iam _a'))
-     ).in_(lambda _a, z: None)
+     ).in_(lambda z: None)
     watcher.expected(
         'Iam y',
-        'Iam x',
         'Iam z',
-        'Iam _a',
     )
 
 
