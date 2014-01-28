@@ -13,4 +13,5 @@ loader = unittest.TestLoader()
 
 
 def test_initialize_with_func():
-    let(('x', lambda: 10)).in_(lambda x: eq_(x, 10))
+    (let() | ('x', lambda: 10)
+     ).in_(lambda x: eq_(x, 10))

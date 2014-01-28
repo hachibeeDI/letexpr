@@ -24,12 +24,8 @@ class let(object):
     ['1 is an odd number.', '2 is an even number.', '3 is an odd number.', '4 is an even number.']
     '''
 
-    def __init__(self, action=None):
-        if action is not None:
-            name, act = action
-            self.lets = {name: act()}
-        else:
-            self.lets = {}
+    def __init__(self):
+        self.lets = {}
 
     def __or__(self, action):
         ''' :type action: (str, func) '''
