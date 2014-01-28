@@ -23,6 +23,23 @@ loader = unittest.TestLoader()
 def test_executed():
     (let() | ('x', lambda: 10)
      ).in_(lambda x: eq_(x, 10))
+    r = (let()
+         | ('x', lambda: 10)
+         | ('y', lambda: 20)
+         | ('size', lambda x, y: x * y)
+         | ('hoge', lambda x, y: 'fooo')
+         ).in_(lambda x, y, size: 'x = {x}, y = {y}, x * y = {size}'.format(x=x, y=y, size=size))
+    assert r == 'x = 10, y = 20, x * y = 200'
+
+    r = [
+        (let()
+            | ('_i', lambda: str(i))
+            | ('r', lambda: 'even' if i % 2 == 0 else 'odd')
+         ).in_(lambda _i, r: _i + ' is an ' + r + ' number.')
+        for i in range(1, 5)
+    ]
+    assert r == \
+        ['1 is an odd number.', '2 is an even number.', '3 is an odd number.', '4 is an even number.']
 
 
 def test_lazy_evalucated():
