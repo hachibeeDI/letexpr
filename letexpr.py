@@ -5,6 +5,11 @@ from __future__ import (print_function, division, absolute_import, unicode_liter
 from inspect import getargspec
 
 
+def expr(x):
+    ''' x -> (void -> x) '''
+    return lambda: x
+
+
 class let(object):
     '''
     '''

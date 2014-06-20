@@ -5,6 +5,8 @@
 
 That is python module imitate `let expression` like a Haskell.
 
+And support lazy evaluation.
+
 
 # Installation
 
@@ -16,12 +18,14 @@ $ pip install https://github.com/hachibeeDI/letexpr/archive/master.zip
 # Example
 
 ```python
-from letexpr import let
+from letexpr import let, expr
+
+# expr(x) = lambda x: lambda: x
 
 answer = (
     let()
-        | ('x', lambda : 10)
-        | ('y', lambda : 20)
+        | ('x', expr(10))
+        | ('y', expr(20))
         | ('size', lambda x, y: x * y)
         | ('hoge', lambda x, y: 'fooo')
     ).in_(lambda x, y, size:
@@ -33,8 +37,8 @@ print answer
 # with List Comprehensions
 even_or_odd = [
     (let()
-        | ('_i', lambda : str(i))
-        | ('r', lambda : 'even' if i % 2 == 0 else 'odd')
+        | ('_i', expr(str(i)))
+        | ('r', expr('even' if i % 2 == 0 else 'odd'))
     ).in_(lambda _i, r:
         _i + ' is an ' + r  + ' number.')
             for i in range(1, 5)]
