@@ -44,6 +44,19 @@ even_or_odd = [
             for i in range(1, 5)]
 print even_or_odd
 #  => ['1 is odd number.', '2 is even number.', '3 is odd number.', '4 is even number.']
+
+
+# with anonymous function
+let_ = (let()
+    | ('x', expr('x'))
+    | ('y', expr('y'))
+)
+@let_.in_()
+def _(x, y):
+    return x + y
+print let_.end
+#  => 'xy'
+
 ```
 
 # Testing

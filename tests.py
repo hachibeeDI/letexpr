@@ -9,7 +9,7 @@ else:
     from itertools import zip_longest
 
 
-from letexpr import let
+from letexpr import let, expr
 
 from nose.tools import eq_
 
@@ -40,6 +40,30 @@ def test_executed():
     ]
     assert r == \
         ['1 is an odd number.', '2 is an even number.', '3 is an odd number.', '4 is an even number.']
+
+
+def test_with_block():
+    let_ = (let()
+        | ('x', expr('x'))
+        | ('y', expr('y'))
+    )
+    @let_.in_()
+    def _(x, y):
+        return x + y
+
+    assert let_.end == 'xy'
+
+
+def test_should_throw():
+    try:
+        (let()
+            | ('x', expr('x'))
+            | ('y', expr('y'))
+         ).in_("hogee")
+    except TypeError:
+        assert True
+    else:
+        assert False
 
 
 def test_lazy_evalucated():
