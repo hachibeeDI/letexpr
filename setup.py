@@ -18,7 +18,7 @@ classifiers = [
 
 setup(
     name='letexpr',
-    version='0.3.1',
+    version='0.3.5',
     description='imitation of let expression like a Haskell.',
     author='OGURA_Daiki',
     author_email='8hachibee125@gmail.com',
